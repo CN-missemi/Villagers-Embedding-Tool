@@ -50,13 +50,9 @@ pub struct InputArg {
     pub worker_count: u32,
     #[clap(short, long, help = "调试模式(打印更多日志)")]
     pub debug: bool,
-
     #[clap(
-        short,
         long,
         help = "视频输出码率，默认使用解码器码率"
     )]
     pub bitrate: Option<usize>,
-    // #[clap(short, long, help = "调试模式(打印更多日志)")]
-    // pub debug: bool,
 }
