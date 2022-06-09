@@ -19,13 +19,17 @@ jobs:
     steps:
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: "Install ffmpeg for Ubuntu"
-        run: sudo apt install -y clang libavcodec-dev libavformat-dev libavutil-dev libavformat-dev libdevice-dev linavfilter-dev pkg-config
+        run: sudo apt install -y clang libavcodec-dev libavformat-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev pkg-config
       - if: ${{ matrix.os == 'macos-latest' }}
         name: "Install ffmpeg for macOS"
         run: brew install pkg-config ffmpeg
-#       - if: ${{ matrix.os == 'windows-latest' }}
-#         name: "Install ffmpeg for Windows"
-        
+      - if: ${{ matrix.os == 'windows-latest' }}
+        name: "Install ffmpeg for Windows"
+        run: |
+          rustup toolchain install stable-x86_64-pc-windows-msvc
+          rustup default stable-x86_64-pc-windows-msvc
+          vcpkg install ffmpeg:x64-windows-static
+          vcpkg install ffmpeg:x64-windows-static-md
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
