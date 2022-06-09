@@ -36,6 +36,7 @@ jobs:
           rustup toolchain install stable-x86_64-pc-windows-msvc
           rustup default stable-x86_64-pc-windows-msvc
           vcpkg install ffmpeg:x64-windows-static
+          vcpkg integrate install
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
