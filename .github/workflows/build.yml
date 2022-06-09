@@ -24,7 +24,7 @@ jobs:
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: Install deps on Ubuntu
         run: sudo apt install nasm
-      - if: ${{ matrix.os == "macos-latest" }}
+      - if: ${{ matrix.os == 'macos-latest' }}
         name: Install deps on macos
         run: brew install nasm
 #       - if: ${{ matrix.os == 'macos-latest' }}
