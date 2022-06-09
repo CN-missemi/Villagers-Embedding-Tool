@@ -17,12 +17,16 @@ jobs:
     name: Build
     runs-on: ${{ matrix.os }}
     steps:
+
+#       - if: ${{ matrix.os == 'ubuntu-latest' }}
+#         name: "Install ffmpeg for Ubuntu"
+#         run: sudo apt install -y clang libavcodec-dev libavformat-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev pkg-config
       - if: ${{ matrix.os == 'ubuntu-latest' }}
-        name: "Install ffmpeg for Ubuntu"
-        run: sudo apt install -y clang libavcodec-dev libavformat-dev libavutil-dev libavformat-dev libavdevice-dev libavfilter-dev pkg-config
-      - if: ${{ matrix.os == 'macos-latest' }}
-        name: "Install ffmpeg for macOS"
-        run: brew install pkg-config ffmpeg@4
+        name: Install deps on Ubuntu
+        run: sudo apt install nasm
+#       - if: ${{ matrix.os == 'macos-latest' }}
+#         name: "Install ffmpeg for macOS"
+#         run: brew install pkg-config ffmpeg@4
       - if: ${{ matrix.os == 'windows-latest' }}
         name: "Install ffmpeg for Windows"
         run: |
