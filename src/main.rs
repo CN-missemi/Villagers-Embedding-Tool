@@ -24,7 +24,8 @@ use ffmpeg_next::{
     Dictionary, Error, Packet,
 };
 use ffmpeg_sys_next::{
-    av_frame_get_buffer, avcodec_alloc_context3, avcodec_parameters_from_context, AVRational,
+    av_frame_get_buffer, avcodec_alloc_context3, avcodec_parameters_from_context,
+    avcodec_parameters_to_context, AVRational,
 };
 
 mod cmdline;
@@ -112,7 +113,20 @@ fn main() -> anyhow::Result<()> {
     info!("Input video codec: {:#?}", input_video.codec().id());
     info!("Output video codec: {:#?}", output_video.codec().id());
 
-    let context_decoder = codec::context::Context::from_parameters(input_video.parameters())?;
+    // avcodec_paramete
+    // let context_decoder = codec::context::Context::from_parameters()?;
+    let context_decoder = {
+        let parameters = input_video.parameters();
+        let mut context = codec::context::Context::new();
+
+        unsafe {
+            match avcodec_parameters_to_context(context.as_mut_ptr(), parameters.as_ptr()) {
+                e if e < 0 => Err(Error::from(e)),
+                _ => Ok(context),
+            }
+        }
+        .unwrap()
+    };
     // let context_encoder = codec::context::Context::new();
     let libx264 = codec::encoder::find_by_name("libx264").expect("Missing libx264 encoder!");
 
