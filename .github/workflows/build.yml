@@ -5,14 +5,13 @@ on:
     branches: ["master"]
 #     tags:
 #       - v**
-  pull_request:
 
 jobs:
   build:
     strategy:
       fail-fast: true
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: ["windows-latest", "ubuntu-latest", "macos-latest"]
 
 
     name: Build
