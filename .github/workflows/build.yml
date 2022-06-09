@@ -19,7 +19,7 @@ jobs:
     steps:
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: "Install ffmpeg for Ubuntu"
-        run: apt install -y clang libavcodec-dev libavformat-dev libavutil-dev pkg-config
+        run: sudo apt install -y clang libavcodec-dev libavformat-dev libavutil-dev pkg-config
       - if: ${{ matrix.os == 'macos-latest' }}
         name: "Install ffmpeg for macOS"
         run: brew install pkg-config ffmpeg
