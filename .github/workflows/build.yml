@@ -24,6 +24,9 @@ jobs:
       - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: Install deps on Ubuntu
         run: sudo apt install nasm
+      - if: ${{ matrix.os == "macos-latest" }}
+        name: Install deps on macos
+        run: brew install nasm
 #       - if: ${{ matrix.os == 'macos-latest' }}
 #         name: "Install ffmpeg for macOS"
 #         run: brew install pkg-config ffmpeg@4
