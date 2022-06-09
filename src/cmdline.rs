@@ -7,7 +7,7 @@ pub struct InputArg {
     #[clap(
         short,
         long,
-        default_value = "lec.mp4",
+        // default_value = "lec.mp4",
         help = "输入视频文件名 (ffmpeg所支持的格式)"
     )]
     pub input: String,
