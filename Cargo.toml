@@ -8,8 +8,8 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.56"
 clap = { version = "3.1.8", features = ["derive"] }
-ffmpeg-next = "5.0.3"
-ffmpeg-sys-next = {version = "5.0.1"}
+ffmpeg-next = {version = "5.0.3"}
+ffmpeg-sys-next = {version = "5.0.1", features = ["static"]}
 flexi_logger = "0.22.3"
 # flexi_logger = "0.22.3"
 lazy_static = "1.4.0"
