@@ -11,15 +11,26 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        job:
-          - { os: macos-latest }
-          - { os: ubuntu-latest }
-          - { os: windows-latest }
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        
+#         job:
+#           - { os: macos-latest }
+#           - { os: ubuntu-latest }
+#           - { os: windows-latest }
 
 
     name: Build
     runs-on: ${{ matrix.job.os }}
     steps:
+      - if: matrix.job.os == "ubuntu-latest"
+        name: "Install ffmpeg for Ubuntu"
+        run: apt install -y clang libavcodec-dev libavformat-dev libavutil-dev pkg-config
+      - if: matrix.job.os == "macos-latest"
+        name: "Install ffmpeg for macOS"
+        run: brew install pkg-config ffmpeg
+#       - if: matrix.job.os == "windows-latest"
+#         name: "Install ffmpeg for Windows"
+        
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
