@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: ["windows-latest", "ubuntu-latest", "macos-latest"]
 
