@@ -18,10 +18,10 @@ num_cpus = "1.13.1"
 rayon = "1.5.1"
 regex = "1.5.5"
 
-[target.'cfg(any(target_family = "windows", target_family = "macos"))'.dependencies]
+[target.'cfg(target_family = "windows")'.dependencies]
 ffmpeg-sys-next = {version = "5.0.1", features = ["static"]}
 
-[target.'cfg(target_family = "linux")'.dependencies]
+[target.'cfg(not(target_family = "windows"))'.dependencies]
 ffmpeg-sys-next = {version = "5.0.1", features = ["build"]}
 
 
