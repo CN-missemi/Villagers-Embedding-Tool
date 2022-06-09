@@ -15,15 +15,15 @@ jobs:
 
 
     name: Build
-    runs-on: ${{ matrix.job.os }}
+    runs-on: ${{ matrix.os }}
     steps:
-      - if: ${{ matrix.job.os == 'ubuntu-latest' }}
+      - if: ${{ matrix.os == 'ubuntu-latest' }}
         name: "Install ffmpeg for Ubuntu"
         run: apt install -y clang libavcodec-dev libavformat-dev libavutil-dev pkg-config
-      - if: ${{ matrix.job.os == 'macos-latest' }}
+      - if: ${{ matrix.os == 'macos-latest' }}
         name: "Install ffmpeg for macOS"
         run: brew install pkg-config ffmpeg
-#       - if: matrix.job.os == "windows-latest"
+#       - if: ${{ matrix.os == 'windows-latest' }}
 #         name: "Install ffmpeg for Windows"
         
       - uses: actions/checkout@v2
