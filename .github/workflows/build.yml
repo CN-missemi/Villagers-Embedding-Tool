@@ -13,11 +13,6 @@ jobs:
       fail-fast: true
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        
-#         job:
-#           - { os: macos-latest }
-#           - { os: ubuntu-latest }
-#           - { os: windows-latest }
 
 
     name: Build
