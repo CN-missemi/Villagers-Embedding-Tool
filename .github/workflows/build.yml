@@ -54,11 +54,11 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
         with:
           file: target/release/villagers-embedding-tool.exe
-      - name: Upx compression (Ubuntu & macOS)
-        uses: crazy-max/ghaction-upx@v2.0.0
-        if: ${{ matrix.os != 'windows-latest' }}
-        with:
-          file: target/release/villagers-embedding-tool
+      # - name: Upx compression (Ubuntu & macOS)
+      #   uses: crazy-max/ghaction-upx@v2.0.0
+      #   if: ${{ matrix.os != 'windows-latest' }}
+      #   with:
+      #     file: target/release/villagers-embedding-tool
       - name: Rename binary
         id: rename
         shell: bash
